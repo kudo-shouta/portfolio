@@ -171,56 +171,46 @@ void EndText(status p, status d)
 	if(p.Sum > 21){
 		DrawString(X, Y, PBast, Black);
 		DrawString(X, Y+15, Lose, Black);
-		lose++;
-		return ;
+		loseflag = 1;
 	}
 	else if(d.Sum > 21){
 		DrawString(X, Y, DBast, Black);
 		DrawString(X, Y+15, Win, Black);
-		win++;
-		return ;
+		winflag = 1;
 	}
-	if(p.Sum == 21)
+	else if(p.Sum == 21)
 		if(d.Sum == 21)
 			if(p.Count == 2 && d.Count != 2){
 				DrawString(X, Y+15, Win, Black);
-				win++;
-				return ;
+				winflag = 1;
 			}
 			else if(p.Count != 2 && d.Count == 2){
 				DrawString(X, Y+15, Lose, Black);
-				lose++;
-				return ;
+				loseflag = 1;
 			}
 			else{
 				DrawString(X, Y+15, Even, Black);
-				even++;
-				return ;
+				evenflag = 1;
 			}
 		else{
 			DrawString(X, Y+15, Win, Black);
-			win++;
-			return ;
+			winflag = 1;
 		}
 	else if(d.Sum == 21){
 		DrawString(X, Y, Lose, Black);
-		lose++;
-		return ;
+		loseflag = 1;
 	}
-	if(p.Sum > d.Sum){
+	else if(p.Sum > d.Sum){
 		DrawString(X, Y, Win, Black);
-		win++;
-		return ;
+		winflag = 1;
 	}
 	else if(p.Sum < d.Sum){
 		DrawString(X, Y, Lose, Black);
-		lose++;
-		return ;
+		loseflag = 1;
 	}
 	else{
 		DrawString(X, Y, Even, Black);
-		even++;
-		return ;
+		evenflag = 1;
 	}
 
 	if(fin==0){
